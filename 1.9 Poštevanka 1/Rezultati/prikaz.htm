@@ -1,0 +1,445 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Prikaz rezultatov testiranja</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
+            .tableBase { border-collapse: collapse; }
+            .tableBase > tbody > tr > td { border: 1px solid black; padding: 7px;}
+            .tableResults { table-layout: fixed; border-spacing: 0px; border-collapse: separate; }
+            table#nasredini { margin-left:auto; margin-right:auto; }
+            table tbody td.hoverOk {background-color:#9F9; border: 1px solid #63B563; width: 15px; color: black; text-align: center; }
+            .hoverOk:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #63B563; }
+            .hoverOk:hover td { background: transparent; }
+            .hoverOk > a:link, .hoverOk > a:visited, .hoverOk > a:hover, .hoverOk > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverErr {background-color:#FFBF00; border: 1px solid #CB9800; width: 15px; color: black; text-align: center; }
+            .hoverErr:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #CB9800; }
+            .hoverErr:hover td { background: transparent; }
+            .hoverErr > a:link, .hoverErr > a:visited, .hoverErr > a:hover, .hoverErr > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverRuntime {background-color:#FF9; border: 1px solid #D8D87E; width: 15px; color: black; text-align: center; }
+            .hoverRuntime:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #D8D87E; }
+            .hoverRuntime:hover td { background: transparent; }
+            .hoverRuntime > a:link, .hoverRuntime > a:visited, .hoverRuntime > a:hover, .hoverRuntime > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverCompile {background-color:#C00000; border: 1px solid #710B0B; width: 15px; color: black; text-align: center; }
+            .hoverCompile:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #710B0B; }
+            .hoverCompile:hover td { background: transparent; }
+            .hoverCompile > a:link, .hoverCompile > a:visited, .hoverCompile > a:hover, .hoverCompile > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverMissing {background-color:#F0F0F0; border: 1px solid #ABABAB; width: 15px; color: black; text-align: center; }
+            .hoverMissing:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #ABABAB; }
+            .hoverMissing:hover td { background: transparent; }
+            .hoverMissing > a:link, .hoverMissing > a:visited, .hoverMissing > a:hover, .hoverMissing > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverTimeout {background-color:#B9F; border: 1px solid #9070CE; width: 15px; color: black; text-align: center; }
+            .hoverTimeout:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #9070CE; }
+            .hoverTimeout:hover td { background: transparent; }
+            .hoverTimeout > a:link, .hoverTimeout > a:visited, .hoverTimeout > a:hover, .hoverTimeout > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverImage {background-color:#D0E0F0; border: 1px solid #a6b3c0; width: 15px; color: black; text-align: center; }
+            .hoverImage:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #a6b3c0; }
+            .hoverImage:hover td { background: transparent; }
+            .hoverImage > a:link, .hoverImage > a:visited, .hoverImage > a:hover, .hoverImage > a:active { color: black; font-size: 0.9em; }
+            .tableCommon { border-collapse: collapse; }
+            .tableOK > tbody > tr > td { border: 1px solid #63B563; padding: 7px;}
+            .tableError > tbody > tr > td { border: 1px solid #CB9800; padding: 7px;}
+            .tableRuntime > tbody > tr > td { border: 1px solid #D8D87E; padding: 7px;}
+            .tableCompiler > tbody > tr > td { border: 1px solid #710B0B; padding: 7px;}
+            .tableMissing > tbody > tr > td { border: 1px solid #ABABAB; padding: 7px;}
+            .tableTimeout > tbody > tr > td { border: 1px solid #9070CE; padding: 7px;}
+            .tableImage > tbody > tr > td { border: 1px solid #a6b3c0; padding: 7px;}
+            .tableSummary { table-layout: fixed; }
+            .texttt { font-family: DejaVu Sans Mono, monospace; font-size: 0.8em; }
+            table.diff > tbody > tr > td { border: none; font-family: DejaVu Sans Mono, monospace}
+            .diff_add { color: green; font-family: DejaVu Sans Mono, monospace; }
+            .diff_sub { color: blue; font-family: DejaVu Sans Mono, monospace; }
+            .diff_chg { color: red; font-family: DejaVu Sans Mono, monospace; }
+            a { color: blue; text-decoration: none; height: 100%; width: 100%; vertical-align: middle; }
+            a:link { color: blue; text-decoration: none; }
+            a:link { color: blue; text-decoration: none; }
+            a:hover { color: blue; text-decoration: underline; }
+            body, td { font: normal normal 100%/1.0 DejaVu Sans, sans-serif; }
+            h1 { font-weight: bold; font-size: 150%; }
+            h2 { font-weight: normal; font-size: 125%; border-top: 1px solid black; border-bottom: 1px solid black; background: #DEF; padding: 5px; margin-top: 36px; margin-bottom: 36px}
+            .container{ margin: 0px auto; width: 70%; min-width: 700px; margin-top: 1.8cm; margin-bottom: 1.8cm; }
+            .rwordb{ color: blue; font-weight: bold; }
+            .rwordv{ color:#8000ff; font-weight: bold; }
+            .vcomment{ color: green; }
+            .bcomment{ color: green; }
+            .niz{ color:#a31515; }
+            .stevilo{ color:#ff8000; }
+            tab { padding-left: 4em; }
+            #grad1 {
+                background: -webkit-linear-gradient(left, #E0E0E0 , white);
+                background: -o-linear-gradient(right, #E0E0E0, white);
+                background: -moz-linear-gradient(right, #E0E0E0, white);
+                background: linear-gradient(to right, #E0E0E0 , white);
+            }
+            #grad2 {
+                background: -webkit-linear-gradient(left, #9F9 , white);
+                background: -o-linear-gradient(right, #9F9, white);
+                background: -moz-linear-gradient(right, #9F9, white);
+                background: linear-gradient(to right, #9F9 , white);
+            }
+            .capSlika { display:block; height: 25px; margin:0 auto; font-size: 1.0em; text-align: left; }
+            .dborder { padding: 0px; border: 1px solid #CACACA; }
+            .capText { display: block; margin:0 auto; font-size: 0.9em; text-align: left; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <a name="top"></a>
+        <h1 id="grad2" style="padding: 10px; border: 0px solid black; color: #000000;">Rezultati preverjanja <span style="color: #700000;">PostevankaPrvic.java</span> (10/10)</h1>
+        <div style="height: 20px"></div>
+        <a name="summary"></a>
+        <h2>Povzetek rezultatov</h2>
+        <table id="nasredini" class="tableBase tableResults">
+            <tbody>
+                <tr>
+                <td class="hoverOk"><a href="#testcase1">1</a></td>
+                <td class="hoverOk"><a href="#testcase2">2</a></td>
+                <td class="hoverOk"><a href="#testcase3">3</a></td>
+                <td class="hoverOk"><a href="#testcase4">4</a></td>
+                <td class="hoverOk"><a href="#testcase5">5</a></td>
+                <td class="hoverOk"><a href="#testcase6">6</a></td>
+                <td class="hoverOk"><a href="#testcase7">7</a></td>
+                <td class="hoverOk"><a href="#testcase8">8</a></td>
+                <td class="hoverOk"><a href="#testcase9">9</a></td>
+                <td class="hoverOk"><a href="#testcase10">10</a></td>
+                </tr>
+                <tr></tr>
+            </tbody>
+        </table>
+        <div style="height: 20px"></div>
+        <h2>Rezultati</h2>
+        <a name="testcase1"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 1</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            5&nbsp;6<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            5<br/>10<br/>15<br/>20<br/>25<br/>30<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase2"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 2</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            -20&nbsp;3<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            -20<br/>-40<br/>-60<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase3"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 3</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            15&nbsp;1<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            15<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase4"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 4</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            0&nbsp;10<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            0<br/>0<br/>0<br/>0<br/>0<br/>0<br/>0<br/>0<br/>0<br/>0<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase5"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 5</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            -123456&nbsp;1<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            -123456<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase6"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 6</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            452&nbsp;17<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            452<br/>904<br/>1356<br/>1808<br/>2260<br/>2712<br/>3164<br/>3616<br/>4068<br/>4520<br/>4972<br/>5424<br/>5876<br/>6328<br/>6780<br/>7232<br/>7684<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase7"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 7</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            -4527&nbsp;128<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            -4527<br/>-9054<br/>-13581<br/>-18108<br/>-22635<br/>-27162<br/>-31689<br/>-36216<br/>-40743<br/>-45270<br/>-49797<br/>-54324<br/>-58851<br/>-63378<br/>-67905<br/>-72432<br/>-76959<br/>-81486<br/>-86013<br/>-90540<br/>-95067<br/>-99594<br/>-104121<br/>-108648<br/>-113175<br/>-117702<br/>-122229<br/>-126756<br/>-131283<br/>-135810<br/>-140337<br/>-144864<br/>-149391<br/>-153918<br/>-158445<br/>-162972<br/>-167499<br/>-172026<br/>-176553<br/>-181080<br/>-185607<br/>-190134<br/>-194661<br/>-199188<br/>-203715<br/>-208242<br/>-212769<br/>-217296<br/>-221823<br/>-226350<br/>-230877<br/>-235404<br/>-239931<br/>-244458<br/>-248985<br/>-253512<br/>-258039<br/>-262566<br/>-267093<br/>-271620<br/>-276147<br/>-280674<br/>-285201<br/>-289728<br/>-294255<br/>-298782<br/>-303309<br/>-307836<br/>-312363<br/>-316890<br/>-321417<br/>-325944<br/>-330471<br/>-334998<br/>-339525<br/>-344052<br/>-348579<br/>-353106<br/>-357633<br/>-362160<br/>-366687<br/>-371214<br/>-375741<br/>-380268<br/>-384795<br/>-389322<br/>-393849<br/>-398376<br/>-402903<br/>-407430<br/>-411957<br/>-416484<br/>-421011<br/>-425538<br/>-430065<br/>-434592<br/>-439119<br/>-443646<br/>-448173<br/>-452700<br/>-457227<br/>-461754<br/>-466281<br/>-470808<br/>-475335<br/>-479862<br/>-484389<br/>-488916<br/>-493443<br/>-497970<br/>-502497<br/>-507024<br/>-511551<br/>-516078<br/>-520605<br/>-525132<br/>-529659<br/>-534186<br/>-538713<br/>-543240<br/>-547767<br/>-552294<br/>-556821<br/>-561348<br/>-565875<br/>-570402<br/>-574929<br/>-579456<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase8"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 8</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            512&nbsp;512<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            512<br/>1024<br/>1536<br/>2048<br/>2560<br/>3072<br/>3584<br/>4096<br/>4608<br/>5120<br/>5632<br/>6144<br/>6656<br/>7168<br/>7680<br/>8192<br/>8704<br/>9216<br/>9728<br/>10240<br/>10752<br/>11264<br/>11776<br/>12288<br/>12800<br/>13312<br/>13824<br/>14336<br/>14848<br/>15360<br/>15872<br/>16384<br/>16896<br/>17408<br/>17920<br/>18432<br/>18944<br/>19456<br/>19968<br/>20480<br/>20992<br/>21504<br/>22016<br/>22528<br/>23040<br/>23552<br/>24064<br/>24576<br/>25088<br/>25600<br/>26112<br/>26624<br/>27136<br/>27648<br/>28160<br/>28672<br/>29184<br/>29696<br/>30208<br/>30720<br/>31232<br/>31744<br/>32256<br/>32768<br/>33280<br/>33792<br/>34304<br/>34816<br/>35328<br/>35840<br/>36352<br/>36864<br/>37376<br/>37888<br/>38400<br/>38912<br/>39424<br/>39936<br/>40448<br/>40960<br/>41472<br/>41984<br/>42496<br/>43008<br/>43520<br/>44032<br/>44544<br/>45056<br/>45568<br/>46080<br/>46592<br/>47104<br/>47616<br/>48128<br/>48640<br/>49152<br/>49664<br/>50176<br/>50688<br/>51200<br/>51712<br/>52224<br/>52736<br/>53248<br/>53760<br/>54272<br/>54784<br/>55296<br/>55808<br/>56320<br/>56832<br/>57344<br/>57856<br/>58368<br/>58880<br/>59392<br/>59904<br/>60416<br/>60928<br/>61440<br/>61952<br/>62464<br/>62976<br/>63488<br/>64000<br/>64512<br/>65024<br/>65536<br/>66048<br/>66560<br/>67072<br/>67584<br/>68096<br/>68608<br/>69120<br/>69632<br/>70144<br/>70656<br/>71168<br/>71680<br/>72192<br/>72704<br/>73216<br/>73728<br/>74240<br/>74752<br/>75264<br/>75776<br/>76288<br/>76800<br/>77312<br/>77824<br/>78336<br/>78848<br/>79360<br/>79872<br/>80384<br/>80896<br/>81408<br/>81920<br/>82432<br/>82944<br/>83456<br/>83968<br/>84480<br/>84992<br/>85504<br/>86016<br/>86528<br/>87040<br/>87552<br/>88064<br/>88576<br/>89088<br/>89600<br/>90112<br/>90624<br/>91136<br/>91648<br/>92160<br/>92672<br/>93184<br/>93696<br/>94208<br/>94720<br/>95232<br/>95744<br/>96256<br/>96768<br/>97280<br/>97792<br/>98304<br/>98816<br/>99328<br/>99840<br/>100352<br/>100864<br/>101376<br/>101888<br/>102400<br/>102912<br/>103424<br/>103936<br/>104448<br/>104960<br/>105472<br/>105984<br/>106496<br/>107008<br/>107520<br/>108032<br/>108544<br/>109056<br/>109568<br/>110080<br/>110592<br/>111104<br/>111616<br/>112128<br/>112640<br/>113152<br/>113664<br/>114176<br/>114688<br/>115200<br/>115712<br/>116224<br/>116736<br/>117248<br/>117760<br/>118272<br/>118784<br/>119296<br/>119808<br/>120320<br/>120832<br/>121344<br/>121856<br/>122368<br/>122880<br/>123392<br/>123904<br/>124416<br/>124928<br/>125440<br/>125952<br/>126464<br/>126976<br/>127488<br/>128000<br/>128512<br/>129024<br/>129536<br/>130048<br/>130560<br/>131072<br/>131584<br/>132096<br/>132608<br/>133120<br/>133632<br/>134144<br/>134656<br/>135168<br/>135680<br/>136192<br/>136704<br/>137216<br/>137728<br/>138240<br/>138752<br/>139264<br/>139776<br/>140288<br/>140800<br/>141312<br/>141824<br/>142336<br/>142848<br/>143360<br/>143872<br/>144384<br/>144896<br/>145408<br/>145920<br/>146432<br/>146944<br/>147456<br/>147968<br/>148480<br/>148992<br/>149504<br/>150016<br/>150528<br/>151040<br/>151552<br/>152064<br/>152576<br/>153088<br/>153600<br/>154112<br/>154624<br/>155136<br/>155648<br/>156160<br/>156672<br/>157184<br/>157696<br/>158208<br/>158720<br/>159232<br/>159744<br/>160256<br/>160768<br/>161280<br/>161792<br/>162304<br/>162816<br/>163328<br/>163840<br/>164352<br/>164864<br/>165376<br/>165888<br/>166400<br/>166912<br/>167424<br/>167936<br/>168448<br/>168960<br/>169472<br/>169984<br/>170496<br/>171008<br/>171520<br/>172032<br/>172544<br/>173056<br/>173568<br/>174080<br/>174592<br/>175104<br/>175616<br/>176128<br/>176640<br/>177152<br/>177664<br/>178176<br/>178688<br/>179200<br/>179712<br/>180224<br/>180736<br/>181248<br/>181760<br/>182272<br/>182784<br/>183296<br/>183808<br/>184320<br/>184832<br/>185344<br/>185856<br/>186368<br/>186880<br/>187392<br/>187904<br/>188416<br/>188928<br/>189440<br/>189952<br/>190464<br/>190976<br/>191488<br/>192000<br/>192512<br/>193024<br/>193536<br/>194048<br/>194560<br/>195072<br/>195584<br/>196096<br/>196608<br/>197120<br/>197632<br/>198144<br/>198656<br/>199168<br/>199680<br/>200192<br/>200704<br/>201216<br/>201728<br/>202240<br/>202752<br/>203264<br/>203776<br/>204288<br/>204800<br/>205312<br/>205824<br/>206336<br/>206848<br/>207360<br/>207872<br/>208384<br/>208896<br/>209408<br/>209920<br/>210432<br/>210944<br/>211456<br/>211968<br/>212480<br/>212992<br/>213504<br/>214016<br/>214528<br/>215040<br/>215552<br/>216064<br/>216576<br/>217088<br/>217600<br/>218112<br/>218624<br/>219136<br/>219648<br/>220160<br/>220672<br/>221184<br/>221696<br/>222208<br/>222720<br/>223232<br/>223744<br/>224256<br/>224768<br/>225280<br/>225792<br/>226304<br/>226816<br/>227328<br/>227840<br/>228352<br/>228864<br/>229376<br/>229888<br/>230400<br/>230912<br/>231424<br/>231936<br/>232448<br/>232960<br/>233472<br/>233984<br/>234496<br/>235008<br/>235520<br/>236032<br/>236544<br/>237056<br/>237568<br/>238080<br/>238592<br/>239104<br/>239616<br/>240128<br/>240640<br/>241152<br/>241664<br/>242176<br/>242688<br/>243200<br/>243712<br/>244224<br/>244736<br/>245248<br/>245760<br/>246272<br/>246784<br/>247296<br/>247808<br/>248320<br/>248832<br/>249344<br/>249856<br/>250368<br/>250880<br/>251392<br/>251904<br/>252416<br/>252928<br/>253440<br/>253952<br/>254464<br/>254976<br/>255488<br/>256000<br/>256512<br/>257024<br/>257536<br/>258048<br/>258560<br/>259072<br/>259584<br/>260096<br/>260608<br/>261120<br/>261632<br/>262144<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase9"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 9</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            1000000&nbsp;1000<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            1000000<br/>2000000<br/>3000000<br/>4000000<br/>5000000<br/>6000000<br/>7000000<br/>8000000<br/>9000000<br/>10000000<br/>11000000<br/>12000000<br/>13000000<br/>14000000<br/>15000000<br/>16000000<br/>17000000<br/>18000000<br/>19000000<br/>20000000<br/>21000000<br/>22000000<br/>23000000<br/>24000000<br/>25000000<br/>26000000<br/>27000000<br/>28000000<br/>29000000<br/>30000000<br/>31000000<br/>32000000<br/>33000000<br/>34000000<br/>35000000<br/>36000000<br/>37000000<br/>38000000<br/>39000000<br/>40000000<br/>41000000<br/>42000000<br/>43000000<br/>44000000<br/>45000000<br/>46000000<br/>47000000<br/>48000000<br/>49000000<br/>50000000<br/>51000000<br/>52000000<br/>53000000<br/>54000000<br/>55000000<br/>56000000<br/>57000000<br/>58000000<br/>59000000<br/>60000000<br/>61000000<br/>62000000<br/>63000000<br/>64000000<br/>65000000<br/>66000000<br/>67000000<br/>68000000<br/>69000000<br/>70000000<br/>71000000<br/>72000000<br/>73000000<br/>74000000<br/>75000000<br/>76000000<br/>77000000<br/>78000000<br/>79000000<br/>80000000<br/>81000000<br/>82000000<br/>83000000<br/>84000000<br/>85000000<br/>86000000<br/>87000000<br/>88000000<br/>89000000<br/>90000000<br/>91000000<br/>92000000<br/>93000000<br/>94000000<br/>95000000<br/>96000000<br/>97000000<br/>98000000<br/>99000000<br/>100000000<br/>101000000<br/>102000000<br/>103000000<br/>104000000<br/>105000000<br/>106000000<br/>107000000<br/>108000000<br/>109000000<br/>110000000<br/>111000000<br/>112000000<br/>113000000<br/>114000000<br/>115000000<br/>116000000<br/>117000000<br/>118000000<br/>119000000<br/>120000000<br/>121000000<br/>122000000<br/>123000000<br/>124000000<br/>125000000<br/>126000000<br/>127000000<br/>128000000<br/>129000000<br/>130000000<br/>131000000<br/>132000000<br/>133000000<br/>134000000<br/>135000000<br/>136000000<br/>137000000<br/>138000000<br/>139000000<br/>140000000<br/>141000000<br/>142000000<br/>143000000<br/>144000000<br/>145000000<br/>146000000<br/>147000000<br/>148000000<br/>149000000<br/>150000000<br/>151000000<br/>152000000<br/>153000000<br/>154000000<br/>155000000<br/>156000000<br/>157000000<br/>158000000<br/>159000000<br/>160000000<br/>161000000<br/>162000000<br/>163000000<br/>164000000<br/>165000000<br/>166000000<br/>167000000<br/>168000000<br/>169000000<br/>170000000<br/>171000000<br/>172000000<br/>173000000<br/>174000000<br/>175000000<br/>176000000<br/>177000000<br/>178000000<br/>179000000<br/>180000000<br/>181000000<br/>182000000<br/>183000000<br/>184000000<br/>185000000<br/>186000000<br/>187000000<br/>188000000<br/>189000000<br/>190000000<br/>191000000<br/>192000000<br/>193000000<br/>194000000<br/>195000000<br/>196000000<br/>197000000<br/>198000000<br/>199000000<br/>200000000<br/>201000000<br/>202000000<br/>203000000<br/>204000000<br/>205000000<br/>206000000<br/>207000000<br/>208000000<br/>209000000<br/>210000000<br/>211000000<br/>212000000<br/>213000000<br/>214000000<br/>215000000<br/>216000000<br/>217000000<br/>218000000<br/>219000000<br/>220000000<br/>221000000<br/>222000000<br/>223000000<br/>224000000<br/>225000000<br/>226000000<br/>227000000<br/>228000000<br/>229000000<br/>230000000<br/>231000000<br/>232000000<br/>233000000<br/>234000000<br/>235000000<br/>236000000<br/>237000000<br/>238000000<br/>239000000<br/>240000000<br/>241000000<br/>242000000<br/>243000000<br/>244000000<br/>245000000<br/>246000000<br/>247000000<br/>248000000<br/>249000000<br/>250000000<br/>251000000<br/>252000000<br/>253000000<br/>254000000<br/>255000000<br/>256000000<br/>257000000<br/>258000000<br/>259000000<br/>260000000<br/>261000000<br/>262000000<br/>263000000<br/>264000000<br/>265000000<br/>266000000<br/>267000000<br/>268000000<br/>269000000<br/>270000000<br/>271000000<br/>272000000<br/>273000000<br/>274000000<br/>275000000<br/>276000000<br/>277000000<br/>278000000<br/>279000000<br/>280000000<br/>281000000<br/>282000000<br/>283000000<br/>284000000<br/>285000000<br/>286000000<br/>287000000<br/>288000000<br/>289000000<br/>290000000<br/>291000000<br/>292000000<br/>293000000<br/>294000000<br/>295000000<br/>296000000<br/>297000000<br/>298000000<br/>299000000<br/>300000000<br/>301000000<br/>302000000<br/>303000000<br/>304000000<br/>305000000<br/>306000000<br/>307000000<br/>308000000<br/>309000000<br/>310000000<br/>311000000<br/>312000000<br/>313000000<br/>314000000<br/>315000000<br/>316000000<br/>317000000<br/>318000000<br/>319000000<br/>320000000<br/>321000000<br/>322000000<br/>323000000<br/>324000000<br/>325000000<br/>326000000<br/>327000000<br/>328000000<br/>329000000<br/>330000000<br/>331000000<br/>332000000<br/>333000000<br/>334000000<br/>335000000<br/>336000000<br/>337000000<br/>338000000<br/>339000000<br/>340000000<br/>341000000<br/>342000000<br/>343000000<br/>344000000<br/>345000000<br/>346000000<br/>347000000<br/>348000000<br/>349000000<br/>350000000<br/>351000000<br/>352000000<br/>353000000<br/>354000000<br/>355000000<br/>356000000<br/>357000000<br/>358000000<br/>359000000<br/>360000000<br/>361000000<br/>362000000<br/>363000000<br/>364000000<br/>365000000<br/>366000000<br/>367000000<br/>368000000<br/>369000000<br/>370000000<br/>371000000<br/>372000000<br/>373000000<br/>374000000<br/>375000000<br/>376000000<br/>377000000<br/>378000000<br/>379000000<br/>380000000<br/>381000000<br/>382000000<br/>383000000<br/>384000000<br/>385000000<br/>386000000<br/>387000000<br/>388000000<br/>389000000<br/>390000000<br/>391000000<br/>392000000<br/>393000000<br/>394000000<br/>395000000<br/>396000000<br/>397000000<br/>398000000<br/>399000000<br/>400000000<br/>401000000<br/>402000000<br/>403000000<br/>404000000<br/>405000000<br/>406000000<br/>407000000<br/>408000000<br/>409000000<br/>410000000<br/>411000000<br/>412000000<br/>413000000<br/>414000000<br/>415000000<br/>416000000<br/>417000000<br/>418000000<br/>419000000<br/>420000000<br/>421000000<br/>422000000<br/>423000000<br/>424000000<br/>425000000<br/>426000000<br/>427000000<br/>428000000<br/>429000000<br/>430000000<br/>431000000<br/>432000000<br/>433000000<br/>434000000<br/>435000000<br/>436000000<br/>437000000<br/>438000000<br/>439000000<br/>440000000<br/>441000000<br/>442000000<br/>443000000<br/>444000000<br/>445000000<br/>446000000<br/>447000000<br/>448000000<br/>449000000<br/>450000000<br/>451000000<br/>452000000<br/>453000000<br/>454000000<br/>455000000<br/>456000000<br/>457000000<br/>458000000<br/>459000000<br/>460000000<br/>461000000<br/>462000000<br/>463000000<br/>464000000<br/>465000000<br/>466000000<br/>467000000<br/>468000000<br/>469000000<br/>470000000<br/>471000000<br/>472000000<br/>473000000<br/>474000000<br/>475000000<br/>476000000<br/>477000000<br/>478000000<br/>479000000<br/>480000000<br/>481000000<br/>482000000<br/>483000000<br/>484000000<br/>485000000<br/>486000000<br/>487000000<br/>488000000<br/>489000000<br/>490000000<br/>491000000<br/>492000000<br/>493000000<br/>494000000<br/>495000000<br/>496000000<br/>497000000<br/>498000000<br/>499000000<br/>500000000<br/>501000000<br/>502000000<br/>503000000<br/>504000000<br/>505000000<br/>506000000<br/>507000000<br/>508000000<br/>509000000<br/>510000000<br/>511000000<br/>512000000<br/>513000000<br/>514000000<br/>515000000<br/>516000000<br/>517000000<br/>518000000<br/>519000000<br/>520000000<br/>521000000<br/>522000000<br/>523000000<br/>524000000<br/>525000000<br/>526000000<br/>527000000<br/>528000000<br/>529000000<br/>530000000<br/>531000000<br/>532000000<br/>533000000<br/>534000000<br/>535000000<br/>536000000<br/>537000000<br/>538000000<br/>539000000<br/>540000000<br/>541000000<br/>542000000<br/>543000000<br/>544000000<br/>545000000<br/>546000000<br/>547000000<br/>548000000<br/>549000000<br/>550000000<br/>551000000<br/>552000000<br/>553000000<br/>554000000<br/>555000000<br/>556000000<br/>557000000<br/>558000000<br/>559000000<br/>560000000<br/>561000000<br/>562000000<br/>563000000<br/>564000000<br/>565000000<br/>566000000<br/>567000000<br/>568000000<br/>569000000<br/>570000000<br/>571000000<br/>572000000<br/>573000000<br/>574000000<br/>575000000<br/>576000000<br/>577000000<br/>578000000<br/>579000000<br/>580000000<br/>581000000<br/>582000000<br/>583000000<br/>584000000<br/>585000000<br/>586000000<br/>587000000<br/>588000000<br/>589000000<br/>590000000<br/>591000000<br/>592000000<br/>593000000<br/>594000000<br/>595000000<br/>596000000<br/>597000000<br/>598000000<br/>599000000<br/>600000000<br/>601000000<br/>602000000<br/>603000000<br/>604000000<br/>605000000<br/>606000000<br/>607000000<br/>608000000<br/>609000000<br/>610000000<br/>611000000<br/>612000000<br/>613000000<br/>614000000<br/>615000000<br/>616000000<br/>617000000<br/>618000000<br/>619000000<br/>620000000<br/>621000000<br/>622000000<br/>623000000<br/>624000000<br/>625000000<br/>626000000<br/>627000000<br/>628000000<br/>629000000<br/>630000000<br/>631000000<br/>632000000<br/>633000000<br/>634000000<br/>635000000<br/>636000000<br/>637000000<br/>638000000<br/>639000000<br/>640000000<br/>641000000<br/>642000000<br/>643000000<br/>644000000<br/>645000000<br/>646000000<br/>647000000<br/>648000000<br/>649000000<br/>650000000<br/>651000000<br/>652000000<br/>653000000<br/>654000000<br/>655000000<br/>656000000<br/>657000000<br/>658000000<br/>659000000<br/>660000000<br/>661000000<br/>662000000<br/>663000000<br/>664000000<br/>665000000<br/>666000000<br/>667000000<br/>668000000<br/>669000000<br/>670000000<br/>671000000<br/>672000000<br/>673000000<br/>674000000<br/>675000000<br/>676000000<br/>677000000<br/>678000000<br/>679000000<br/>680000000<br/>681000000<br/>682000000<br/>683000000<br/>684000000<br/>685000000<br/>686000000<br/>687000000<br/>688000000<br/>689000000<br/>690000000<br/>691000000<br/>692000000<br/>693000000<br/>694000000<br/>695000000<br/>696000000<br/>697000000<br/>698000000<br/>699000000<br/>700000000<br/>701000000<br/>702000000<br/>703000000<br/>704000000<br/>705000000<br/>706000000<br/>707000000<br/>708000000<br/>709000000<br/>710000000<br/>711000000<br/>712000000<br/>713000000<br/>714000000<br/>715000000<br/>716000000<br/>717000000<br/>718000000<br/>719000000<br/>720000000<br/>721000000<br/>722000000<br/>723000000<br/>724000000<br/>725000000<br/>726000000<br/>727000000<br/>728000000<br/>729000000<br/>730000000<br/>731000000<br/>732000000<br/>733000000<br/>734000000<br/>735000000<br/>736000000<br/>737000000<br/>738000000<br/>739000000<br/>740000000<br/>741000000<br/>742000000<br/>743000000<br/>744000000<br/>745000000<br/>746000000<br/>747000000<br/>748000000<br/>749000000<br/>750000000<br/>751000000<br/>752000000<br/>753000000<br/>754000000<br/>755000000<br/>756000000<br/>757000000<br/>758000000<br/>759000000<br/>760000000<br/>761000000<br/>762000000<br/>763000000<br/>764000000<br/>765000000<br/>766000000<br/>767000000<br/>768000000<br/>769000000<br/>770000000<br/>771000000<br/>772000000<br/>773000000<br/>774000000<br/>775000000<br/>776000000<br/>777000000<br/>778000000<br/>779000000<br/>780000000<br/>781000000<br/>782000000<br/>783000000<br/>784000000<br/>785000000<br/>786000000<br/>787000000<br/>788000000<br/>789000000<br/>790000000<br/>791000000<br/>792000000<br/>793000000<br/>794000000<br/>795000000<br/>796000000<br/>797000000<br/>798000000<br/>799000000<br/>800000000<br/>801000000<br/>802000000<br/>803000000<br/>804000000<br/>805000000<br/>806000000<br/>807000000<br/>808000000<br/>809000000<br/>810000000<br/>811000000<br/>812000000<br/>813000000<br/>814000000<br/>815000000<br/>816000000<br/>817000000<br/>818000000<br/>819000000<br/>820000000<br/>821000000<br/>822000000<br/>823000000<br/>824000000<br/>825000000<br/>826000000<br/>827000000<br/>828000000<br/>829000000<br/>830000000<br/>831000000<br/>832000000<br/>833000000<br/>834000000<br/>835000000<br/>836000000<br/>837000000<br/>838000000<br/>839000000<br/>840000000<br/>841000000<br/>842000000<br/>843000000<br/>844000000<br/>845000000<br/>846000000<br/>847000000<br/>848000000<br/>849000000<br/>850000000<br/>851000000<br/>852000000<br/>853000000<br/>854000000<br/>855000000<br/>856000000<br/>857000000<br/>858000000<br/>859000000<br/>860000000<br/>861000000<br/>862000000<br/>863000000<br/>864000000<br/>865000000<br/>866000000<br/>867000000<br/>868000000<br/>869000000<br/>870000000<br/>871000000<br/>872000000<br/>873000000<br/>874000000<br/>875000000<br/>876000000<br/>877000000<br/>878000000<br/>879000000<br/>880000000<br/>881000000<br/>882000000<br/>883000000<br/>884000000<br/>885000000<br/>886000000<br/>887000000<br/>888000000<br/>889000000<br/>890000000<br/>891000000<br/>892000000<br/>893000000<br/>894000000<br/>895000000<br/>896000000<br/>897000000<br/>898000000<br/>899000000<br/>900000000<br/>901000000<br/>902000000<br/>903000000<br/>904000000<br/>905000000<br/>906000000<br/>907000000<br/>908000000<br/>909000000<br/>910000000<br/>911000000<br/>912000000<br/>913000000<br/>914000000<br/>915000000<br/>916000000<br/>917000000<br/>918000000<br/>919000000<br/>920000000<br/>921000000<br/>922000000<br/>923000000<br/>924000000<br/>925000000<br/>926000000<br/>927000000<br/>928000000<br/>929000000<br/>930000000<br/>931000000<br/>932000000<br/>933000000<br/>934000000<br/>935000000<br/>936000000<br/>937000000<br/>938000000<br/>939000000<br/>940000000<br/>941000000<br/>942000000<br/>943000000<br/>944000000<br/>945000000<br/>946000000<br/>947000000<br/>948000000<br/>949000000<br/>950000000<br/>951000000<br/>952000000<br/>953000000<br/>954000000<br/>955000000<br/>956000000<br/>957000000<br/>958000000<br/>959000000<br/>960000000<br/>961000000<br/>962000000<br/>963000000<br/>964000000<br/>965000000<br/>966000000<br/>967000000<br/>968000000<br/>969000000<br/>970000000<br/>971000000<br/>972000000<br/>973000000<br/>974000000<br/>975000000<br/>976000000<br/>977000000<br/>978000000<br/>979000000<br/>980000000<br/>981000000<br/>982000000<br/>983000000<br/>984000000<br/>985000000<br/>986000000<br/>987000000<br/>988000000<br/>989000000<br/>990000000<br/>991000000<br/>992000000<br/>993000000<br/>994000000<br/>995000000<br/>996000000<br/>997000000<br/>998000000<br/>999000000<br/>1000000000<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase10"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 10</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            -925536&nbsp;915<br/>
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            -925536<br/>-1851072<br/>-2776608<br/>-3702144<br/>-4627680<br/>-5553216<br/>-6478752<br/>-7404288<br/>-8329824<br/>-9255360<br/>-10180896<br/>-11106432<br/>-12031968<br/>-12957504<br/>-13883040<br/>-14808576<br/>-15734112<br/>-16659648<br/>-17585184<br/>-18510720<br/>-19436256<br/>-20361792<br/>-21287328<br/>-22212864<br/>-23138400<br/>-24063936<br/>-24989472<br/>-25915008<br/>-26840544<br/>-27766080<br/>-28691616<br/>-29617152<br/>-30542688<br/>-31468224<br/>-32393760<br/>-33319296<br/>-34244832<br/>-35170368<br/>-36095904<br/>-37021440<br/>-37946976<br/>-38872512<br/>-39798048<br/>-40723584<br/>-41649120<br/>-42574656<br/>-43500192<br/>-44425728<br/>-45351264<br/>-46276800<br/>-47202336<br/>-48127872<br/>-49053408<br/>-49978944<br/>-50904480<br/>-51830016<br/>-52755552<br/>-53681088<br/>-54606624<br/>-55532160<br/>-56457696<br/>-57383232<br/>-58308768<br/>-59234304<br/>-60159840<br/>-61085376<br/>-62010912<br/>-62936448<br/>-63861984<br/>-64787520<br/>-65713056<br/>-66638592<br/>-67564128<br/>-68489664<br/>-69415200<br/>-70340736<br/>-71266272<br/>-72191808<br/>-73117344<br/>-74042880<br/>-74968416<br/>-75893952<br/>-76819488<br/>-77745024<br/>-78670560<br/>-79596096<br/>-80521632<br/>-81447168<br/>-82372704<br/>-83298240<br/>-84223776<br/>-85149312<br/>-86074848<br/>-87000384<br/>-87925920<br/>-88851456<br/>-89776992<br/>-90702528<br/>-91628064<br/>-92553600<br/>-93479136<br/>-94404672<br/>-95330208<br/>-96255744<br/>-97181280<br/>-98106816<br/>-99032352<br/>-99957888<br/>-100883424<br/>-101808960<br/>-102734496<br/>-103660032<br/>-104585568<br/>-105511104<br/>-106436640<br/>-107362176<br/>-108287712<br/>-109213248<br/>-110138784<br/>-111064320<br/>-111989856<br/>-112915392<br/>-113840928<br/>-114766464<br/>-115692000<br/>-116617536<br/>-117543072<br/>-118468608<br/>-119394144<br/>-120319680<br/>-121245216<br/>-122170752<br/>-123096288<br/>-124021824<br/>-124947360<br/>-125872896<br/>-126798432<br/>-127723968<br/>-128649504<br/>-129575040<br/>-130500576<br/>-131426112<br/>-132351648<br/>-133277184<br/>-134202720<br/>-135128256<br/>-136053792<br/>-136979328<br/>-137904864<br/>-138830400<br/>-139755936<br/>-140681472<br/>-141607008<br/>-142532544<br/>-143458080<br/>-144383616<br/>-145309152<br/>-146234688<br/>-147160224<br/>-148085760<br/>-149011296<br/>-149936832<br/>-150862368<br/>-151787904<br/>-152713440<br/>-153638976<br/>-154564512<br/>-155490048<br/>-156415584<br/>-157341120<br/>-158266656<br/>-159192192<br/>-160117728<br/>-161043264<br/>-161968800<br/>-162894336<br/>-163819872<br/>-164745408<br/>-165670944<br/>-166596480<br/>-167522016<br/>-168447552<br/>-169373088<br/>-170298624<br/>-171224160<br/>-172149696<br/>-173075232<br/>-174000768<br/>-174926304<br/>-175851840<br/>-176777376<br/>-177702912<br/>-178628448<br/>-179553984<br/>-180479520<br/>-181405056<br/>-182330592<br/>-183256128<br/>-184181664<br/>-185107200<br/>-186032736<br/>-186958272<br/>-187883808<br/>-188809344<br/>-189734880<br/>-190660416<br/>-191585952<br/>-192511488<br/>-193437024<br/>-194362560<br/>-195288096<br/>-196213632<br/>-197139168<br/>-198064704<br/>-198990240<br/>-199915776<br/>-200841312<br/>-201766848<br/>-202692384<br/>-203617920<br/>-204543456<br/>-205468992<br/>-206394528<br/>-207320064<br/>-208245600<br/>-209171136<br/>-210096672<br/>-211022208<br/>-211947744<br/>-212873280<br/>-213798816<br/>-214724352<br/>-215649888<br/>-216575424<br/>-217500960<br/>-218426496<br/>-219352032<br/>-220277568<br/>-221203104<br/>-222128640<br/>-223054176<br/>-223979712<br/>-224905248<br/>-225830784<br/>-226756320<br/>-227681856<br/>-228607392<br/>-229532928<br/>-230458464<br/>-231384000<br/>-232309536<br/>-233235072<br/>-234160608<br/>-235086144<br/>-236011680<br/>-236937216<br/>-237862752<br/>-238788288<br/>-239713824<br/>-240639360<br/>-241564896<br/>-242490432<br/>-243415968<br/>-244341504<br/>-245267040<br/>-246192576<br/>-247118112<br/>-248043648<br/>-248969184<br/>-249894720<br/>-250820256<br/>-251745792<br/>-252671328<br/>-253596864<br/>-254522400<br/>-255447936<br/>-256373472<br/>-257299008<br/>-258224544<br/>-259150080<br/>-260075616<br/>-261001152<br/>-261926688<br/>-262852224<br/>-263777760<br/>-264703296<br/>-265628832<br/>-266554368<br/>-267479904<br/>-268405440<br/>-269330976<br/>-270256512<br/>-271182048<br/>-272107584<br/>-273033120<br/>-273958656<br/>-274884192<br/>-275809728<br/>-276735264<br/>-277660800<br/>-278586336<br/>-279511872<br/>-280437408<br/>-281362944<br/>-282288480<br/>-283214016<br/>-284139552<br/>-285065088<br/>-285990624<br/>-286916160<br/>-287841696<br/>-288767232<br/>-289692768<br/>-290618304<br/>-291543840<br/>-292469376<br/>-293394912<br/>-294320448<br/>-295245984<br/>-296171520<br/>-297097056<br/>-298022592<br/>-298948128<br/>-299873664<br/>-300799200<br/>-301724736<br/>-302650272<br/>-303575808<br/>-304501344<br/>-305426880<br/>-306352416<br/>-307277952<br/>-308203488<br/>-309129024<br/>-310054560<br/>-310980096<br/>-311905632<br/>-312831168<br/>-313756704<br/>-314682240<br/>-315607776<br/>-316533312<br/>-317458848<br/>-318384384<br/>-319309920<br/>-320235456<br/>-321160992<br/>-322086528<br/>-323012064<br/>-323937600<br/>-324863136<br/>-325788672<br/>-326714208<br/>-327639744<br/>-328565280<br/>-329490816<br/>-330416352<br/>-331341888<br/>-332267424<br/>-333192960<br/>-334118496<br/>-335044032<br/>-335969568<br/>-336895104<br/>-337820640<br/>-338746176<br/>-339671712<br/>-340597248<br/>-341522784<br/>-342448320<br/>-343373856<br/>-344299392<br/>-345224928<br/>-346150464<br/>-347076000<br/>-348001536<br/>-348927072<br/>-349852608<br/>-350778144<br/>-351703680<br/>-352629216<br/>-353554752<br/>-354480288<br/>-355405824<br/>-356331360<br/>-357256896<br/>-358182432<br/>-359107968<br/>-360033504<br/>-360959040<br/>-361884576<br/>-362810112<br/>-363735648<br/>-364661184<br/>-365586720<br/>-366512256<br/>-367437792<br/>-368363328<br/>-369288864<br/>-370214400<br/>-371139936<br/>-372065472<br/>-372991008<br/>-373916544<br/>-374842080<br/>-375767616<br/>-376693152<br/>-377618688<br/>-378544224<br/>-379469760<br/>-380395296<br/>-381320832<br/>-382246368<br/>-383171904<br/>-384097440<br/>-385022976<br/>-385948512<br/>-386874048<br/>-387799584<br/>-388725120<br/>-389650656<br/>-390576192<br/>-391501728<br/>-392427264<br/>-393352800<br/>-394278336<br/>-395203872<br/>-396129408<br/>-397054944<br/>-397980480<br/>-398906016<br/>-399831552<br/>-400757088<br/>-401682624<br/>-402608160<br/>-403533696<br/>-404459232<br/>-405384768<br/>-406310304<br/>-407235840<br/>-408161376<br/>-409086912<br/>-410012448<br/>-410937984<br/>-411863520<br/>-412789056<br/>-413714592<br/>-414640128<br/>-415565664<br/>-416491200<br/>-417416736<br/>-418342272<br/>-419267808<br/>-420193344<br/>-421118880<br/>-422044416<br/>-422969952<br/>-423895488<br/>-424821024<br/>-425746560<br/>-426672096<br/>-427597632<br/>-428523168<br/>-429448704<br/>-430374240<br/>-431299776<br/>-432225312<br/>-433150848<br/>-434076384<br/>-435001920<br/>-435927456<br/>-436852992<br/>-437778528<br/>-438704064<br/>-439629600<br/>-440555136<br/>-441480672<br/>-442406208<br/>-443331744<br/>-444257280<br/>-445182816<br/>-446108352<br/>-447033888<br/>-447959424<br/>-448884960<br/>-449810496<br/>-450736032<br/>-451661568<br/>-452587104<br/>-453512640<br/>-454438176<br/>-455363712<br/>-456289248<br/>-457214784<br/>-458140320<br/>-459065856<br/>-459991392<br/>-460916928<br/>-461842464<br/>-462768000<br/>-463693536<br/>-464619072<br/>-465544608<br/>-466470144<br/>-467395680<br/>-468321216<br/>-469246752<br/>-470172288<br/>-471097824<br/>-472023360<br/>-472948896<br/>-473874432<br/>-474799968<br/>-475725504<br/>-476651040<br/>-477576576<br/>-478502112<br/>-479427648<br/>-480353184<br/>-481278720<br/>-482204256<br/>-483129792<br/>-484055328<br/>-484980864<br/>-485906400<br/>-486831936<br/>-487757472<br/>-488683008<br/>-489608544<br/>-490534080<br/>-491459616<br/>-492385152<br/>-493310688<br/>-494236224<br/>-495161760<br/>-496087296<br/>-497012832<br/>-497938368<br/>-498863904<br/>-499789440<br/>-500714976<br/>-501640512<br/>-502566048<br/>-503491584<br/>-504417120<br/>-505342656<br/>-506268192<br/>-507193728<br/>-508119264<br/>-509044800<br/>-509970336<br/>-510895872<br/>-511821408<br/>-512746944<br/>-513672480<br/>-514598016<br/>-515523552<br/>-516449088<br/>-517374624<br/>-518300160<br/>-519225696<br/>-520151232<br/>-521076768<br/>-522002304<br/>-522927840<br/>-523853376<br/>-524778912<br/>-525704448<br/>-526629984<br/>-527555520<br/>-528481056<br/>-529406592<br/>-530332128<br/>-531257664<br/>-532183200<br/>-533108736<br/>-534034272<br/>-534959808<br/>-535885344<br/>-536810880<br/>-537736416<br/>-538661952<br/>-539587488<br/>-540513024<br/>-541438560<br/>-542364096<br/>-543289632<br/>-544215168<br/>-545140704<br/>-546066240<br/>-546991776<br/>-547917312<br/>-548842848<br/>-549768384<br/>-550693920<br/>-551619456<br/>-552544992<br/>-553470528<br/>-554396064<br/>-555321600<br/>-556247136<br/>-557172672<br/>-558098208<br/>-559023744<br/>-559949280<br/>-560874816<br/>-561800352<br/>-562725888<br/>-563651424<br/>-564576960<br/>-565502496<br/>-566428032<br/>-567353568<br/>-568279104<br/>-569204640<br/>-570130176<br/>-571055712<br/>-571981248<br/>-572906784<br/>-573832320<br/>-574757856<br/>-575683392<br/>-576608928<br/>-577534464<br/>-578460000<br/>-579385536<br/>-580311072<br/>-581236608<br/>-582162144<br/>-583087680<br/>-584013216<br/>-584938752<br/>-585864288<br/>-586789824<br/>-587715360<br/>-588640896<br/>-589566432<br/>-590491968<br/>-591417504<br/>-592343040<br/>-593268576<br/>-594194112<br/>-595119648<br/>-596045184<br/>-596970720<br/>-597896256<br/>-598821792<br/>-599747328<br/>-600672864<br/>-601598400<br/>-602523936<br/>-603449472<br/>-604375008<br/>-605300544<br/>-606226080<br/>-607151616<br/>-608077152<br/>-609002688<br/>-609928224<br/>-610853760<br/>-611779296<br/>-612704832<br/>-613630368<br/>-614555904<br/>-615481440<br/>-616406976<br/>-617332512<br/>-618258048<br/>-619183584<br/>-620109120<br/>-621034656<br/>-621960192<br/>-622885728<br/>-623811264<br/>-624736800<br/>-625662336<br/>-626587872<br/>-627513408<br/>-628438944<br/>-629364480<br/>-630290016<br/>-631215552<br/>-632141088<br/>-633066624<br/>-633992160<br/>-634917696<br/>-635843232<br/>-636768768<br/>-637694304<br/>-638619840<br/>-639545376<br/>-640470912<br/>-641396448<br/>-642321984<br/>-643247520<br/>-644173056<br/>-645098592<br/>-646024128<br/>-646949664<br/>-647875200<br/>-648800736<br/>-649726272<br/>-650651808<br/>-651577344<br/>-652502880<br/>-653428416<br/>-654353952<br/>-655279488<br/>-656205024<br/>-657130560<br/>-658056096<br/>-658981632<br/>-659907168<br/>-660832704<br/>-661758240<br/>-662683776<br/>-663609312<br/>-664534848<br/>-665460384<br/>-666385920<br/>-667311456<br/>-668236992<br/>-669162528<br/>-670088064<br/>-671013600<br/>-671939136<br/>-672864672<br/>-673790208<br/>-674715744<br/>-675641280<br/>-676566816<br/>-677492352<br/>-678417888<br/>-679343424<br/>-680268960<br/>-681194496<br/>-682120032<br/>-683045568<br/>-683971104<br/>-684896640<br/>-685822176<br/>-686747712<br/>-687673248<br/>-688598784<br/>-689524320<br/>-690449856<br/>-691375392<br/>-692300928<br/>-693226464<br/>-694152000<br/>-695077536<br/>-696003072<br/>-696928608<br/>-697854144<br/>-698779680<br/>-699705216<br/>-700630752<br/>-701556288<br/>-702481824<br/>-703407360<br/>-704332896<br/>-705258432<br/>-706183968<br/>-707109504<br/>-708035040<br/>-708960576<br/>-709886112<br/>-710811648<br/>-711737184<br/>-712662720<br/>-713588256<br/>-714513792<br/>-715439328<br/>-716364864<br/>-717290400<br/>-718215936<br/>-719141472<br/>-720067008<br/>-720992544<br/>-721918080<br/>-722843616<br/>-723769152<br/>-724694688<br/>-725620224<br/>-726545760<br/>-727471296<br/>-728396832<br/>-729322368<br/>-730247904<br/>-731173440<br/>-732098976<br/>-733024512<br/>-733950048<br/>-734875584<br/>-735801120<br/>-736726656<br/>-737652192<br/>-738577728<br/>-739503264<br/>-740428800<br/>-741354336<br/>-742279872<br/>-743205408<br/>-744130944<br/>-745056480<br/>-745982016<br/>-746907552<br/>-747833088<br/>-748758624<br/>-749684160<br/>-750609696<br/>-751535232<br/>-752460768<br/>-753386304<br/>-754311840<br/>-755237376<br/>-756162912<br/>-757088448<br/>-758013984<br/>-758939520<br/>-759865056<br/>-760790592<br/>-761716128<br/>-762641664<br/>-763567200<br/>-764492736<br/>-765418272<br/>-766343808<br/>-767269344<br/>-768194880<br/>-769120416<br/>-770045952<br/>-770971488<br/>-771897024<br/>-772822560<br/>-773748096<br/>-774673632<br/>-775599168<br/>-776524704<br/>-777450240<br/>-778375776<br/>-779301312<br/>-780226848<br/>-781152384<br/>-782077920<br/>-783003456<br/>-783928992<br/>-784854528<br/>-785780064<br/>-786705600<br/>-787631136<br/>-788556672<br/>-789482208<br/>-790407744<br/>-791333280<br/>-792258816<br/>-793184352<br/>-794109888<br/>-795035424<br/>-795960960<br/>-796886496<br/>-797812032<br/>-798737568<br/>-799663104<br/>-800588640<br/>-801514176<br/>-802439712<br/>-803365248<br/>-804290784<br/>-805216320<br/>-806141856<br/>-807067392<br/>-807992928<br/>-808918464<br/>-809844000<br/>-810769536<br/>-811695072<br/>-812620608<br/>-813546144<br/>-814471680<br/>-815397216<br/>-816322752<br/>-817248288<br/>-818173824<br/>-819099360<br/>-820024896<br/>-820950432<br/>-821875968<br/>-822801504<br/>-823727040<br/>-824652576<br/>-825578112<br/>-826503648<br/>-827429184<br/>-828354720<br/>-829280256<br/>-830205792<br/>-831131328<br/>-832056864<br/>-832982400<br/>-833907936<br/>-834833472<br/>-835759008<br/>-836684544<br/>-837610080<br/>-838535616<br/>-839461152<br/>-840386688<br/>-841312224<br/>-842237760<br/>-843163296<br/>-844088832<br/>-845014368<br/>-845939904<br/>-846865440<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+
+        <div style="height: 30px"></div>
+
+        <table id="grad1" class="tableLegend tableSummary"
+          <tbody>
+            <tr>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #9F9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">ok</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FFBF00; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FF9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka med izvajanjem</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #C00000; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">se ne prevede</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #B9F; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">timeout (1000 ms)</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #D0E0F0; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">rezultat izrisa</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a name="bottom"></a>
+        </div>
+    </body>
+    <!-- java class tester version "1.5.8" -->
+    <!-- 3.1.2022 16:14.27 -->
+    <!-- DESKTOP-4SIOT6C, fe80::8d14:d1b8:bbd0:b11%9 -->
+</html>
