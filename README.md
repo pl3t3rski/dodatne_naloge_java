@@ -1,6 +1,6 @@
 # dodatne_naloge_java
 
-Seznam rešewnih dodatnih nalog:
+Seznam rešenih dodatnih nalog:
 ----------
 - 1.1
 - 1.2
