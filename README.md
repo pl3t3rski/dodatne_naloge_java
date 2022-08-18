@@ -1,5 +1,7 @@
 # dodatne_naloge_java
 
+Dodatne naloge pri predmetu Programiranje 1, Fakulteta za računalništvo in informatiko, Univerza v Ljubljani
+
 Seznam rešenih dodatnih nalog:
 ----------
 - 1.1
