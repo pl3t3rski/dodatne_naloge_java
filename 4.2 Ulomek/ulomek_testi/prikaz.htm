@@ -1,0 +1,679 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Prikaz rezultatov testiranja</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
+            .tableBase { border-collapse: collapse; }
+            .tableBase > tbody > tr > td { border: 1px solid black; padding: 7px;}
+            .tableResults { table-layout: fixed; border-spacing: 0px; border-collapse: separate; }
+            table#nasredini { margin-left:auto; margin-right:auto; }
+            table tbody td.hoverOk {background-color:#9F9; border: 1px solid #63B563; width: 15px; color: black; text-align: center; }
+            .hoverOk:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #63B563; }
+            .hoverOk:hover td { background: transparent; }
+            .hoverOk > a:link, .hoverOk > a:visited, .hoverOk > a:hover, .hoverOk > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverErr {background-color:#FFBF00; border: 1px solid #CB9800; width: 15px; color: black; text-align: center; }
+            .hoverErr:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #CB9800; }
+            .hoverErr:hover td { background: transparent; }
+            .hoverErr > a:link, .hoverErr > a:visited, .hoverErr > a:hover, .hoverErr > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverRuntime {background-color:#FF9; border: 1px solid #D8D87E; width: 15px; color: black; text-align: center; }
+            .hoverRuntime:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #D8D87E; }
+            .hoverRuntime:hover td { background: transparent; }
+            .hoverRuntime > a:link, .hoverRuntime > a:visited, .hoverRuntime > a:hover, .hoverRuntime > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverCompile {background-color:#C00000; border: 1px solid #710B0B; width: 15px; color: black; text-align: center; }
+            .hoverCompile:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #710B0B; }
+            .hoverCompile:hover td { background: transparent; }
+            .hoverCompile > a:link, .hoverCompile > a:visited, .hoverCompile > a:hover, .hoverCompile > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverMissing {background-color:#F0F0F0; border: 1px solid #ABABAB; width: 15px; color: black; text-align: center; }
+            .hoverMissing:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #ABABAB; }
+            .hoverMissing:hover td { background: transparent; }
+            .hoverMissing > a:link, .hoverMissing > a:visited, .hoverMissing > a:hover, .hoverMissing > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverTimeout {background-color:#B9F; border: 1px solid #9070CE; width: 15px; color: black; text-align: center; }
+            .hoverTimeout:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #9070CE; }
+            .hoverTimeout:hover td { background: transparent; }
+            .hoverTimeout > a:link, .hoverTimeout > a:visited, .hoverTimeout > a:hover, .hoverTimeout > a:active { color: black; font-size: 0.9em; }
+            table tbody td.hoverImage {background-color:#D0E0F0; border: 1px solid #a6b3c0; width: 15px; color: black; text-align: center; }
+            .hoverImage:hover { background-color: #FAFAF0; !important; color: #000; border: 1px solid #a6b3c0; }
+            .hoverImage:hover td { background: transparent; }
+            .hoverImage > a:link, .hoverImage > a:visited, .hoverImage > a:hover, .hoverImage > a:active { color: black; font-size: 0.9em; }
+            .tableCommon { border-collapse: collapse; }
+            .tableOK > tbody > tr > td { border: 1px solid #63B563; padding: 7px;}
+            .tableError > tbody > tr > td { border: 1px solid #CB9800; padding: 7px;}
+            .tableRuntime > tbody > tr > td { border: 1px solid #D8D87E; padding: 7px;}
+            .tableCompiler > tbody > tr > td { border: 1px solid #710B0B; padding: 7px;}
+            .tableMissing > tbody > tr > td { border: 1px solid #ABABAB; padding: 7px;}
+            .tableTimeout > tbody > tr > td { border: 1px solid #9070CE; padding: 7px;}
+            .tableImage > tbody > tr > td { border: 1px solid #a6b3c0; padding: 7px;}
+            .tableSummary { table-layout: fixed; }
+            .texttt { font-family: DejaVu Sans Mono, monospace; font-size: 0.8em; }
+            table.diff > tbody > tr > td { border: none; font-family: DejaVu Sans Mono, monospace}
+            .diff_add { color: green; font-family: DejaVu Sans Mono, monospace; }
+            .diff_sub { color: blue; font-family: DejaVu Sans Mono, monospace; }
+            .diff_chg { color: red; font-family: DejaVu Sans Mono, monospace; }
+            a { color: blue; text-decoration: none; height: 100%; width: 100%; vertical-align: middle; }
+            a:link { color: blue; text-decoration: none; }
+            a:link { color: blue; text-decoration: none; }
+            a:hover { color: blue; text-decoration: underline; }
+            body, td { font: normal normal 100%/1.0 DejaVu Sans, sans-serif; }
+            h1 { font-weight: bold; font-size: 150%; }
+            h2 { font-weight: normal; font-size: 125%; border-top: 1px solid black; border-bottom: 1px solid black; background: #DEF; padding: 5px; margin-top: 36px; margin-bottom: 36px}
+            .container{ margin: 0px auto; width: 70%; min-width: 700px; margin-top: 1.8cm; margin-bottom: 1.8cm; }
+            .rwordb{ color: blue; font-weight: bold; }
+            .rwordv{ color:#8000ff; font-weight: bold; }
+            .vcomment{ color: green; }
+            .bcomment{ color: green; }
+            .niz{ color:#a31515; }
+            .stevilo{ color:#ff8000; }
+            tab { padding-left: 4em; }
+            #grad1 {
+                background: -webkit-linear-gradient(left, #E0E0E0 , white);
+                background: -o-linear-gradient(right, #E0E0E0, white);
+                background: -moz-linear-gradient(right, #E0E0E0, white);
+                background: linear-gradient(to right, #E0E0E0 , white);
+            }
+            #grad2 {
+                background: -webkit-linear-gradient(left, #9F9 , white);
+                background: -o-linear-gradient(right, #9F9, white);
+                background: -moz-linear-gradient(right, #9F9, white);
+                background: linear-gradient(to right, #9F9 , white);
+            }
+            .capSlika { display:block; height: 25px; margin:0 auto; font-size: 1.0em; text-align: left; }
+            .dborder { padding: 0px; border: 1px solid #CACACA; }
+            .capText { display: block; margin:0 auto; font-size: 0.9em; text-align: left; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <a name="top"></a>
+        <h1 id="grad2" style="padding: 10px; border: 0px solid black; color: #000000;">Rezultati preverjanja metod programa (11/11)</h1>
+        <div style="height: 20px"></div>
+        <a name="summary"></a>
+        <h2>Povzetek rezultatov</h2>
+        <table id="nasredini" class="tableBase tableResults">
+            <tbody>
+                <tr>
+                <td class="hoverOk"><a href="#testcase1">1</a></td>
+                <td class="hoverOk"><a href="#testcase2">2</a></td>
+                <td class="hoverOk"><a href="#testcase3">3</a></td>
+                <td class="hoverOk"><a href="#testcase4">4</a></td>
+                <td class="hoverOk"><a href="#testcase5">5</a></td>
+                <td class="hoverOk"><a href="#testcase6">6</a></td>
+                <td class="hoverOk"><a href="#testcase7">7</a></td>
+                <td class="hoverOk"><a href="#testcase8">8</a></td>
+                <td class="hoverOk"><a href="#testcase9">9</a></td>
+                <td class="hoverOk"><a href="#testcase10">10</a></td>
+                </tr>
+                <tr></tr>
+            </tbody>
+        </table>
+        <table id="nasredini" class="tableBase tableResults">
+            <tbody>
+                <tr>
+                <td class="hoverOk"><a href="#testcase11">11</a></td>
+                </tr>
+                <tr></tr>
+            </tbody>
+        </table>
+        <div style="height: 20px"></div>
+        <h2>Rezultati</h2>
+        <a name="testcase1"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 1</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test01 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.toString());<br/>
+<tab><tab>System.out.println(b.toString());<br/>
+<tab><tab>System.out.println(c.toString());<br/>
+<tab><tab>System.out.println(d.toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            2/3<br/>4/3<br/>-7/1<br/>2/25<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase2"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 2</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test02 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.negacija().toString());<br/>
+<tab><tab>System.out.println(b.negacija().toString());<br/>
+<tab><tab>System.out.println(c.negacija().toString());<br/>
+<tab><tab>System.out.println(d.negacija().toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            -2/3<br/>-4/3<br/>7/1<br/>-2/25<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase3"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 3</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test03 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.obrat().toString());<br/>
+<tab><tab>System.out.println(b.obrat().toString());<br/>
+<tab><tab>System.out.println(c.obrat().toString());<br/>
+<tab><tab>System.out.println(d.obrat().toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            3/2<br/>3/4<br/>-1/7<br/>25/2<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase4"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 4</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test04 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.vsota(b).toString());<br/>
+<tab><tab>System.out.println(a.vsota(c).toString());<br/>
+<tab><tab>System.out.println(a.vsota(d).toString());<br/>
+<tab><tab>System.out.println(b.vsota(c).toString());<br/>
+<tab><tab>System.out.println(b.vsota(d).toString());<br/>
+<tab><tab>System.out.println(c.vsota(d).toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            2/1<br/>-19/3<br/>56/75<br/>-17/3<br/>106/75<br/>-173/25<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase5"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 5</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test05 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.razlika(b).toString());<br/>
+<tab><tab>System.out.println(a.razlika(c).toString());<br/>
+<tab><tab>System.out.println(a.razlika(d).toString());<br/>
+<tab><tab>System.out.println(b.razlika(c).toString());<br/>
+<tab><tab>System.out.println(b.razlika(d).toString());<br/>
+<tab><tab>System.out.println(c.razlika(d).toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            -2/3<br/>23/3<br/>44/75<br/>25/3<br/>94/75<br/>-177/25<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase6"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 6</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test06 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.zmnozek(b).toString());<br/>
+<tab><tab>System.out.println(a.zmnozek(c).toString());<br/>
+<tab><tab>System.out.println(a.zmnozek(d).toString());<br/>
+<tab><tab>System.out.println(b.zmnozek(c).toString());<br/>
+<tab><tab>System.out.println(b.zmnozek(d).toString());<br/>
+<tab><tab>System.out.println(c.zmnozek(d).toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            8/9<br/>-14/3<br/>4/75<br/>-28/3<br/>8/75<br/>-14/25<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase7"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 7</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test07 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.kolicnik(b).toString());<br/>
+<tab><tab>System.out.println(a.kolicnik(c).toString());<br/>
+<tab><tab>System.out.println(a.kolicnik(d).toString());<br/>
+<tab><tab>System.out.println(b.kolicnik(c).toString());<br/>
+<tab><tab>System.out.println(b.kolicnik(d).toString());<br/>
+<tab><tab>System.out.println(c.kolicnik(d).toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            1/2<br/>-2/21<br/>25/3<br/>-4/21<br/>50/3<br/>-175/2<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase8"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 8</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test08 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab><span class="rwordb">for</span> (<span class="rwordv">int</span> i = -<span class="stevilo">3</span>;  i <= <span class="stevilo">3</span>;  i++) {<br/>
+<tab><tab><tab>System.out.println(a.potenca(i).toString());<br/>
+<tab><tab><tab>System.out.println(b.potenca(i).toString());<br/>
+<tab><tab><tab>System.out.println(c.potenca(i).toString());<br/>
+<tab><tab><tab>System.out.println(d.potenca(i).toString());<br/>
+<tab><tab>}<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            27/8<br/>27/64<br/>-1/343<br/>15625/8<br/>9/4<br/>9/16<br/>1/49<br/>625/4<br/>3/2<br/>3/4<br/>-1/7<br/>25/2<br/>1/1<br/>1/1<br/>1/1<br/>1/1<br/>2/3<br/>4/3<br/>-7/1<br/>2/25<br/>4/9<br/>16/9<br/>49/1<br/>4/625<br/>8/27<br/>64/27<br/>-343/1<br/>8/15625<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase9"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 9</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test09 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(<span class="rwordb">new</span> Ulomek(-<span class="stevilo">1</span>, <span class="stevilo">1</span>).vsota(a).razlika(b).zmnozek(c).kolicnik(d).potenca(-<span class="stevilo">2</span>).toString());<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            36/765625<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase10"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 10</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test10 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(<span class="stevilo">2</span>, <span class="stevilo">3</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">288</span>, <span class="stevilo">216</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">14</span>, -<span class="stevilo">2</span>);<br/>
+<tab><tab>Ulomek d = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">12</span>, -<span class="stevilo">150</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.jeManjsiOd(a));<br/>
+<tab><tab>System.out.println(a.jeManjsiOd(b));<br/>
+<tab><tab>System.out.println(a.jeManjsiOd(c));<br/>
+<tab><tab>System.out.println(a.jeManjsiOd(d));<br/>
+<br/>
+<tab><tab>System.out.println(b.jeManjsiOd(a));<br/>
+<tab><tab>System.out.println(b.jeManjsiOd(b));<br/>
+<tab><tab>System.out.println(b.jeManjsiOd(c));<br/>
+<tab><tab>System.out.println(b.jeManjsiOd(d));<br/>
+<br/>
+<tab><tab>System.out.println(c.jeManjsiOd(a));<br/>
+<tab><tab>System.out.println(c.jeManjsiOd(b));<br/>
+<tab><tab>System.out.println(c.jeManjsiOd(c));<br/>
+<tab><tab>System.out.println(c.jeManjsiOd(d));<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            false<br/>true<br/>false<br/>false<br/>false<br/>false<br/>false<br/>false<br/>true<br/>true<br/>false<br/>true<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+        <a name="testcase11"></a>
+        <div style="border: 1px solid #63B563">
+            <table class="tableOK tableCommon" style="width: 100%; border: 3px solid #9F9;">
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="background-color: #9F9; color: black;">Testni primer 11</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;">Vhod</td>
+                        <td class="texttt">
+                            <br/>
+<span class="rwordv">public</span> <span class="rwordv">class</span> Test11 {<br/>
+<br/>
+<tab><span class="rwordv">public</span> <span class="rwordv">static</span> <span class="rwordv">void</span> main(String[] args) {<br/>
+<tab><tab>Ulomek a = <span class="rwordb">new</span> Ulomek(-<span class="stevilo">30</span>, -<span class="stevilo">40</span>);<br/>
+<tab><tab>Ulomek b = <span class="rwordb">new</span> Ulomek(<span class="stevilo">24</span>, -<span class="stevilo">18</span>);<br/>
+<tab><tab>Ulomek c = <span class="rwordb">new</span> Ulomek(<span class="stevilo">15</span>, <span class="stevilo">20</span>);<br/>
+<br/>
+<tab><tab>System.out.println(a.toString());<br/>
+<tab><tab>System.out.println(a.jeEnakKot(c));<br/>
+<tab><tab>System.out.println(a.negacija().toString());<br/>
+<tab><tab>System.out.println(a.obrat().toString());<br/>
+<tab><tab>System.out.println(a.vsota(b).toString());<br/>
+<tab><tab>System.out.println(a.razlika(b).toString());<br/>
+<tab><tab>System.out.println(a.zmnozek(b).toString());<br/>
+<tab><tab>System.out.println(a.kolicnik(b).toString());<br/>
+<tab><tab>System.out.println(a.potenca(<span class="stevilo">2</span>).toString());<br/>
+<tab><tab>System.out.println(b.potenca(-<span class="stevilo">3</span>).toString());<br/>
+<tab><tab>System.out.println(a.jeManjsiOd(b));<br/>
+<tab>}<br/>
+}<br/>
+
+
+<br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izhod programa</td>
+                        <td class="texttt">
+                            3/4<br/>true<br/>-3/4<br/>4/3<br/>-7/12<br/>25/12<br/>-1/1<br/>-9/16<br/>9/16<br/>-27/64<br/>false<br/><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 15px"></div>
+<div style="font-size: 0.8em;">[ <a href="#top">&uparrow;</a> | <a href="#bottom">&downarrow;</a> | 
+<a href="#summary">Povzetek</a> | 
+<a href="#testcase1">Rezultati</a> ]</div><div style="height: 30px"></div>
+
+        <div style="height: 30px"></div>
+
+        <table id="grad1" class="tableLegend tableSummary"
+          <tbody>
+            <tr>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #9F9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">ok</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FFBF00; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #FF9; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">napaka med izvajanjem</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #C00000; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">se ne prevede</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #B9F; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">timeout (1000 ms)</td>
+                </tr>
+              </table>
+              </td>
+              <td style="color: black;">
+              <table class="tableLegend">
+                <tr>
+	              <td style="background-color: #D0E0F0; color: black; width: 10px; text-align: center; border: 1px solid black; padding: 2px;"></td>
+	              <td style="font-size: 0.7em; padding: 3px;">rezultat izrisa</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a name="bottom"></a>
+        </div>
+    </body>
+    <!-- java class tester version "1.5.8" -->
+    <!-- 18.8.2022 16:14.40 -->
+    <!-- DESKTOP-4SIOT6C, fe80::4d9b:90f1:232d:6286%40 -->
+</html>
