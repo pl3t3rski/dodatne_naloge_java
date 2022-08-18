@@ -1,0 +1,1002 @@
+500
+bba 67902203
+acb 47205116
+bcc 61570493
+baa 91049227
+cbb 48104689
+caa 40941802
+baa 58255276
+bcb 11084626
+aba 30745730
+cab 25605024
+cab 53532051
+bac 51282105
+bbc 48841288
+cbb 39853346
+ccb 30453847
+bba 97200378
+ccb 85122459
+acb 10650922
+cab 61893420
+aca 28491353
+cbc 30083937
+acc 70023366
+baa 89781222
+bab 61312014
+aba 48004935
+bcb 36969484
+cac 71712416
+cbb 88074295
+cca 22017410
+cbc 18659364
+cac 85377129
+ccb 16371450
+cac 36811965
+aab 96600506
+bcc 59685335
+aba 65489303
+bcb 78036659
+aab 13737215
+aca 28785121
+acc 48046503
+cba 20332882
+cbc 73888252
+bca 67128098
+bcc 14715812
+bbc 98512453
+bcc 70412952
+aba 70668326
+abb 24890472
+bca 94664006
+aca 28063957
+bcb 99057942
+bac 20447152
+aac 52221021
+bcb 28467612
+aca 71246846
+cba 94551306
+aab 90014110
+bba 18820569
+bac 91018425
+acb 51882114
+bab 65159924
+aac 27124950
+aab 66336902
+cab 49243706
+cca 76521382
+aab 27062750
+bab 69552694
+ccb 25217213
+cac 68931333
+bcc 34971507
+aca 78008345
+aba 90846636
+aab 30567658
+bac 12806285
+cab 66462724
+aac 93107794
+cbb 17243266
+ccb 98891356
+abb 47182777
+caa 11899375
+abc 74788245
+ccb 41088242
+cbb 85982754
+bca 51880815
+cbc 18549389
+acc 48218552
+bba 62045046
+baa 78810413
+bac 56125617
+bca 83373870
+ccb 24495350
+cbb 17139908
+aac 43141919
+baa 38766176
+cbb 27350712
+bca 53321637
+acb 50952893
+bac 94623042
+aac 76550636
+bac 17505864
+aba 71828141
+ccc 57446834
+bca 51523866
+aba 44799183
+bbb 74173237
+cbc 29421449
+cba 57719643
+bcb 63818652
+bca 32778829
+cab 87148110
+abb 65121242
+caa 11061963
+bcb 33890634
+bca 85162216
+acb 78115764
+aab 71671681
+bcc 91744812
+bbc 61549843
+cca 73144717
+aaa 47405431
+abc 62771763
+aac 19517671
+bca 71474439
+caa 45648770
+cab 34872302
+aaa 64001428
+aca 93956255
+bab 39776919
+aca 48617597
+cbb 29600910
+cbb 88988011
+ccb 86519436
+aac 91710102
+cac 75101631
+aba 63719147
+caa 58071271
+baa 28548065
+ccc 99140236
+aca 99305131
+bbc 22686570
+cab 85735820
+cca 29354523
+bcc 36436144
+bba 93545274
+bcc 98300566
+cba 39999378
+aaa 38413483
+bcc 72697862
+aba 64409560
+ccc 26434019
+cbb 68952684
+aaa 69073308
+aca 95624845
+cbb 47582185
+bab 54372635
+bab 48626056
+bbc 88911435
+bcb 96968814
+ccc 32055763
+aca 11634419
+cac 33435953
+bcb 38770755
+cac 16271154
+aac 93805583
+caa 35456573
+bcc 12157623
+cba 51242499
+bbb 89222790
+abb 31390312
+aac 59209755
+acb 95440554
+cab 31936190
+cbb 44147420
+cbc 14359751
+bbc 78873539
+cac 81509169
+abc 45221966
+bab 72078417
+ccc 29891427
+cca 92103890
+bca 46966782
+bbc 58232448
+cac 66995010
+caa 77399880
+cab 51128926
+cca 51065850
+aaa 33219119
+caa 74307893
+abb 50799074
+cab 46806794
+cac 38894743
+acb 18381005
+aaa 64134947
+baa 89530465
+bcc 80728411
+cac 68506584
+aac 11027344
+aba 19545700
+aab 95768121
+caa 27231587
+abb 40834721
+abb 40664170
+abb 40909201
+bbc 34959895
+cbb 84106622
+cba 60750802
+bcc 65328052
+bcc 36897475
+bab 79121360
+baa 18994451
+bca 17203882
+baa 60299908
+aab 77399518
+ccb 20769680
+abc 50143605
+aac 63308871
+bbc 72058856
+ccb 43872143
+abc 43206745
+bbb 19458255
+ccb 52689441
+cbb 34830873
+cba 48638318
+caa 59768363
+acb 91936707
+aca 12704043
+bbc 25110673
+cac 41092829
+bac 89134451
+caa 52432838
+bbc 77214261
+aac 67170910
+bcc 37049247
+bcc 80444210
+ccc 13261305
+cbb 85829538
+bab 56590025
+aac 83216868
+bca 99681508
+cac 86396517
+bca 89234577
+bab 22117676
+cca 87567869
+bac 32694095
+bba 67229317
+baa 68856856
+cac 28550613
+bca 43481423
+bba 11173158
+bac 24174088
+abc 86514268
+aba 85666226
+acb 28216321
+cbc 82050252
+acc 13470524
+aab 46809913
+aba 63541952
+aaa 20103365
+aca 96091795
+aca 57064244
+caa 25343899
+ccc 85801383
+cca 89422740
+bba 63738832
+aaa 99061571
+cab 15878456
+bbc 99869388
+ccb 17865726
+bcc 83318729
+bcb 67715847
+bba 10545154
+cca 93574485
+bcc 10184875
+cbb 78702836
+aac 17198689
+bab 55853894
+acb 64273315
+abb 86828425
+abc 80776903
+aca 72392501
+acb 98184017
+bba 25448284
+caa 43503736
+ccb 32277531
+cbc 51265818
+aaa 53961371
+aac 75025301
+abc 31844152
+bcc 51258040
+bcc 51154662
+aca 28922179
+bbb 86129785
+bcc 60128960
+bbb 94908660
+caa 74308560
+bca 31098538
+abc 80706542
+ccb 61484952
+baa 85567543
+cba 68967701
+aac 59461946
+cbb 71067262
+ccb 31354958
+aaa 13345953
+bbc 82221676
+bab 45034624
+bac 66494751
+bbc 57974670
+acc 28793574
+aba 31062137
+ccb 76192545
+cbb 50023514
+aca 72131025
+bcb 62571056
+acc 54335057
+bcb 84828985
+bac 40840083
+aac 84844488
+aca 57041463
+bab 77251957
+aba 83412824
+bca 84012954
+bcb 50508308
+acc 56663419
+aca 25317176
+ccb 58348418
+aab 86057777
+cba 40522960
+bbc 12056218
+acc 49151428
+cac 92382706
+bcc 77490938
+caa 56749098
+acb 41476157
+aab 78468633
+cac 75487773
+aab 29098573
+cba 72559236
+aba 54119243
+bac 89274053
+ccb 40552784
+cca 41257280
+cca 95238032
+cab 96857320
+aba 56852435
+cac 94753429
+bab 96036592
+cbc 91150782
+bba 29050486
+bca 66870703
+aba 47647620
+cca 44317729
+cac 82292290
+aba 30389094
+cca 87643570
+aca 65823578
+aac 38842390
+cbb 10796038
+aba 76227689
+bba 14765535
+bca 15567934
+aba 12774480
+cca 78018333
+cbb 22058424
+bca 28936837
+acc 69889943
+cbb 17535956
+ccb 43439889
+aba 59572458
+baa 72701493
+bcb 42979246
+caa 22307312
+cac 15719823
+bcb 95555528
+aba 40109917
+bcc 66823757
+aac 15441467
+bca 77731925
+aaa 12863351
+cba 70579172
+ccb 29265110
+acb 93441571
+bbc 88679335
+bac 57028301
+cbb 97680584
+bbc 11890455
+aca 57118135
+bbc 61609122
+cba 23267661
+cab 51933070
+cab 62748102
+bba 22593713
+baa 37621574
+cba 52545951
+ccc 95685160
+bab 47223523
+aca 96785723
+aba 31438302
+bac 71618969
+bac 89018263
+aca 59069297
+baa 52201042
+cbb 27803811
+cbb 77961732
+baa 42258602
+aac 72440819
+ccb 14638884
+cbc 52505423
+cbc 53021753
+bab 25832625
+abb 61837533
+acb 26901452
+bcb 75045877
+aaa 97961213
+cbc 55399634
+bab 37913494
+acb 96020013
+bca 88627745
+bab 24215211
+ccb 48028245
+bcb 14988979
+bca 65044082
+abb 69596572
+bca 47567075
+bbb 65901914
+bbc 21109711
+cbc 60135993
+aaa 94409041
+cac 97446772
+cab 81883914
+baa 52479912
+abb 94232491
+abb 24289997
+bab 63367762
+abb 59750727
+ccb 87777556
+bbc 44291098
+cbc 95999279
+abc 53306864
+aac 34974312
+bbb 32108493
+cca 90283486
+cba 36309038
+ccc 27662453
+bbc 87913452
+bcc 68479481
+cbc 76216644
+aca 19665341
+cac 93969639
+bbc 33602931
+cac 87792425
+cac 53753603
+cba 46479337
+bbb 51926020
+acb 73851712
+bcc 54609718
+abb 26560343
+acc 67488848
+bac 32301056
+bca 61058629
+bbb 25629526
+cac 46164989
+caa 20806252
+bbc 17472859
+bac 46730392
+ccb 93230406
+cab 85357741
+bca 60772805
+caa 69891653
+bbb 23216269
+cbc 79968128
+cac 44024284
+bba 25516330
+abc 36263322
+abc 87994518
+cac 34652391
+bbc 10518746
+ccc 38858073
+bba 55731760
+cbc 92971163
+bbb 62281202
+ccb 97239607
+bcc 12661393
+cca 52348145
+abc 68299692
+ccb 27611269
+bca 60507360
+bbb 93213632
+aba 61225113
+acb 76876124
+caa 55596549
+bab 64892182
+bbc 35611609
+abb 59065110
+acc 62847223
+bbb 15970034
+abb 90122182
+baa 63435083
+aaa 38579554
+bbc 42602302
+500
+aca
+bab
+cbc
+bbb
+cca
+cba
+bbb
+cca
+cbb
+aaa
+bab
+ccb
+bba
+bcb
+bbc
+bbc
+baa
+baa
+bcb
+cbc
+bcb
+aaa
+caa
+bbc
+abc
+bac
+abc
+ccc
+caa
+bca
+cab
+bca
+bcc
+aac
+baa
+aab
+aba
+abc
+cbb
+baa
+abb
+acb
+aca
+ccc
+bca
+cbc
+caa
+ccc
+cab
+bba
+caa
+aca
+bba
+cbc
+cbb
+aac
+cba
+bca
+cca
+aac
+aba
+aac
+bab
+aba
+abc
+cbb
+caa
+bab
+aac
+aaa
+ccc
+ccb
+bbc
+aac
+cab
+ccb
+bac
+bca
+bca
+bcc
+abb
+cab
+baa
+aac
+aba
+cca
+abb
+baa
+bac
+cba
+bba
+bca
+bac
+aaa
+aca
+cbc
+bbb
+cac
+bba
+cca
+aaa
+aab
+bac
+acc
+bba
+cba
+ccb
+cbb
+cbc
+aba
+ccc
+bab
+bac
+bac
+bcb
+aac
+cbb
+aca
+bca
+bca
+bac
+cac
+aca
+bca
+cbb
+bbc
+aac
+cba
+ccc
+cbb
+aca
+bab
+cba
+cbb
+cbc
+cab
+aca
+bba
+aba
+caa
+cbc
+ccc
+aca
+bca
+cca
+bca
+aac
+acc
+abc
+aba
+bab
+acc
+bab
+ccb
+acc
+bab
+aac
+bbc
+bac
+bbc
+ccc
+bab
+bac
+cac
+ccb
+bca
+abb
+aca
+acc
+aac
+aab
+bbb
+bcc
+bba
+abc
+abb
+cab
+acb
+caa
+aab
+bac
+aba
+cab
+bcc
+baa
+cac
+aba
+bab
+bbb
+ccc
+cca
+aba
+bba
+aaa
+aac
+ccc
+acc
+cca
+bbb
+abc
+cbb
+bcb
+bcb
+acc
+cbc
+cab
+aab
+bca
+acc
+bba
+cbb
+baa
+abc
+acc
+baa
+abb
+baa
+bbb
+bac
+aaa
+abc
+cab
+bab
+abb
+acc
+bab
+abb
+ccb
+acc
+cca
+caa
+cbc
+aca
+aca
+bcb
+cbc
+bcb
+abb
+acc
+bca
+aab
+acc
+acb
+aaa
+cbc
+cac
+bca
+caa
+cbb
+baa
+bab
+cab
+bca
+aab
+bab
+bca
+bba
+bca
+cbc
+aca
+cbc
+aaa
+cbb
+bab
+baa
+cba
+aac
+bbc
+acc
+bca
+bcc
+bbc
+ccc
+aab
+aba
+cbb
+cca
+bbb
+aca
+ccb
+baa
+cab
+cca
+aca
+baa
+aac
+cba
+acc
+bab
+cab
+bca
+cbb
+cab
+bbc
+cac
+bab
+cbc
+cab
+cab
+caa
+aca
+caa
+bbc
+cbc
+bac
+cab
+bac
+cab
+aba
+caa
+cbb
+aaa
+bba
+bac
+bbc
+bbc
+aac
+abc
+bbc
+bab
+bbb
+bba
+cac
+bcb
+aba
+baa
+cbc
+cab
+cac
+cca
+aba
+aca
+bca
+bbc
+cbc
+cab
+aab
+bac
+bcb
+aba
+bca
+cab
+bca
+bbc
+abc
+bca
+abb
+aaa
+caa
+bab
+bca
+aac
+cab
+abb
+cba
+baa
+bcc
+bab
+cba
+cac
+ccc
+ccb
+cbc
+aca
+cbc
+aab
+ccc
+ccc
+caa
+bbb
+aca
+bac
+acb
+aba
+ccc
+bcc
+bab
+ccc
+bbc
+baa
+cac
+bca
+cbb
+aaa
+bbb
+aab
+bcc
+bca
+caa
+aba
+aca
+bac
+caa
+acc
+cca
+bbc
+acc
+aca
+aab
+abc
+bbb
+cbb
+cca
+abb
+aba
+bca
+aca
+cba
+cbc
+cba
+bbb
+cbc
+aba
+abb
+cca
+aac
+bcc
+acb
+cbc
+abb
+bbb
+cac
+cba
+cbc
+ccc
+acb
+bbb
+cbb
+abc
+aba
+acb
+baa
+cba
+cbc
+acc
+bca
+bcb
+acb
+cbb
+aac
+acc
+ccc
+bca
+bcb
+bca
+bba
+bbb
+acb
+bcb
+aac
+acb
+ccb
+aab
+acc
+bbc
+abb
+cac
+bcb
+aac
+bcc
+bcc
+bcc
+cba
+baa
+cca
+baa
+caa
+cab
+cac
+caa
+cbc
+aba
+aca
+cba
+cac
+bcc
+baa
+cbc
+abc
+cca
+abc
+bac
+caa
+bba
+aca
+aba
+bbb
+aaa
+bac
+caa
+caa
+ccc
+cba
+bbc
+acc
+aaa
+aca
+cba
+bcc
+acc

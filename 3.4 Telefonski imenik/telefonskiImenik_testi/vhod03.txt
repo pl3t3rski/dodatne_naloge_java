@@ -1,0 +1,17 @@
+7
+Ivan 031-78-56-34
+Ivan +386-31-55-72-08
+Mojca 01-234-567
+Peter 041-317-650
+Polona 059-456-789
+Helga +49-66-77-88-99-00
+Helga +49-11-22-33-44-55
+8
+Ivan
+Ivan
+Helga
+Helga
+Polona
+Polona
+Mirko
+Mirko

@@ -1,0 +1,22 @@
+10
+baaaa 72026346
+bbbbb 77474966
+abbab 78624929
+aaaba 50053411
+babba 69939483
+abbbb 12383579
+aaaba 27081698
+aabaa 84331699
+baabb 59671593
+bbaba 82528586
+10
+baaba
+aabba
+aaaaa
+abbbb
+bbaaa
+bbbba
+abbba
+babba
+bbbaa
+babba

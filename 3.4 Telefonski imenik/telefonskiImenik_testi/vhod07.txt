@@ -1,0 +1,202 @@
+100
+bab 91934157
+baa 87447251
+bbb 31498148
+aba 79919746
+aab 88331606
+bab 57596342
+abb 37942879
+aaa 93174266
+bab 98761772
+aaa 61117737
+bba 50431778
+aab 63737884
+aba 71337051
+bba 50569288
+bba 30580229
+baa 45235067
+bbb 45432074
+baa 84975527
+baa 64610540
+aaa 43002733
+baa 28883093
+baa 12514743
+aab 72263443
+aba 22271868
+baa 96488068
+aaa 78242937
+bbb 61472358
+abb 99116656
+abb 73229183
+aab 97971333
+baa 78482682
+bba 48145570
+abb 15461083
+bbb 98788209
+aaa 89318150
+baa 12220468
+baa 41020174
+aaa 50776855
+bba 68256856
+bba 97504638
+baa 35985163
+aaa 93192223
+bbb 15612937
+bbb 24885648
+abb 13201969
+aab 70365249
+aba 80078762
+aab 34477346
+aba 65280787
+bbb 63361077
+bba 68196979
+aaa 61631367
+aaa 41605150
+aaa 22265148
+aab 12135359
+aaa 28706921
+baa 32194450
+baa 12283754
+bbb 34619523
+abb 43279436
+aba 23995123
+bbb 94394160
+bba 42131078
+bab 68044588
+aab 54478987
+baa 75488781
+aba 51797100
+aab 77572734
+bba 42299768
+abb 13023410
+bba 94927995
+bbb 80514922
+aaa 32298560
+baa 53623213
+aab 25006159
+bba 64382497
+aab 48048101
+bab 87222028
+aab 85420398
+baa 47024238
+baa 12709265
+bab 59273212
+abb 54827620
+abb 65136259
+bba 91622141
+abb 31985142
+bba 57033483
+aba 65849580
+aaa 92222114
+aaa 18797094
+aab 41286585
+baa 67932461
+abb 99667120
+bba 86245146
+abb 85639060
+baa 25279775
+baa 76614131
+aab 81778202
+bba 70487584
+bba 58505874
+100
+baa
+aba
+abb
+abb
+aaa
+abb
+aba
+bab
+aba
+abb
+abb
+aaa
+baa
+bab
+aba
+baa
+bba
+bbb
+baa
+aab
+aba
+bba
+baa
+bba
+bbb
+baa
+aba
+baa
+bbb
+aaa
+baa
+abb
+aaa
+bab
+bab
+aab
+bbb
+bab
+bab
+aab
+baa
+abb
+bab
+bab
+bbb
+baa
+aaa
+baa
+baa
+abb
+abb
+aaa
+bab
+bbb
+bbb
+bab
+aab
+bab
+aab
+bab
+aba
+bab
+bab
+bbb
+bba
+baa
+baa
+aab
+bab
+bbb
+bbb
+bbb
+aab
+bab
+aba
+bba
+aaa
+bbb
+baa
+abb
+aba
+baa
+aab
+bab
+bba
+aab
+bab
+baa
+bbb
+bab
+baa
+aab
+bba
+abb
+aaa
+bbb
+aaa
+bba
+bab
+abb

@@ -1,0 +1,112 @@
+10
+bbaaa 49594684
+bbbaa 89685391
+bbbaa 36486616
+aabab 64871638
+babab 80320515
+babab 62969971
+bbaaa 65191822
+aabba 26432152
+aaaab 50143811
+aaaab 39798807
+100
+ababb
+aaaba
+abaaa
+abbba
+ababa
+abbbb
+bbaaa
+babab
+bbaab
+aaaaa
+abbaa
+aaabb
+bbaba
+aabbb
+bbbba
+bbbaa
+aaaab
+bbabb
+aabba
+aabbb
+baaba
+bbbab
+bbbaa
+abaaa
+babbb
+baabb
+baaba
+bbbbb
+aaaaa
+aaaaa
+bbaaa
+aabbb
+ababb
+bbbab
+bbbba
+aaaaa
+aabbb
+baaaa
+abaab
+aabba
+aaaaa
+baaaa
+ababa
+babab
+abaaa
+bbbbb
+aaaaa
+abaab
+bbbaa
+bbaba
+abaaa
+aabaa
+aaaaa
+aaaaa
+baaba
+aaaaa
+baaaa
+aabba
+bbaab
+abbab
+bbaaa
+aaaba
+abaaa
+bbbba
+bbbba
+abbab
+aabbb
+bbbbb
+aabba
+bbaab
+baaba
+baabb
+aabbb
+babba
+abbaa
+baaaa
+bbbaa
+bbbab
+aabba
+bbaab
+aabbb
+abbbb
+babba
+abbab
+bbbbb
+abbaa
+bbbaa
+aabaa
+aabbb
+aabaa
+baaab
+babaa
+abbaa
+bbbaa
+babba
+bbbba
+aaaab
+bbabb
+bbbbb
+ababb
